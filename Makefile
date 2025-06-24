@@ -3,7 +3,7 @@ all:
 	run_test
 
 
-tip_test.bin: tip_test.s tip_test.ld
+tip_test.bin: clean tip_test.s tip_test.ld
 	riscv64-unknown-elf-gcc -O0 -ggdb -nostdlib -march=rv64im_zicsr -mabi=lp64 -Wl,-Ttip_test.ld tip_test.s -o tip_test.elf
 	riscv64-unknown-elf-objcopy -O binary tip_test.elf tip_test.bin
 	riscv64-unknown-elf-objdump -b binary -m riscv:rv64 -D  tip_test.bin >  tip_test-bin.dump
